@@ -11,6 +11,13 @@ return 0;
     .global _start
 _start:
 
+    /*
+    mov x0, #5
+    str x0, [SP, #-16]! //modifico SP, push 5 nello stack
+    str x0, [SP, #-16] //, non modifico SP, push 5 nello stack
+    str x0, [SP], #-16  push 5 nello stack, modifico SP
+    */
+    
     adr x0, c // metto il puntatore a c in x0
     ldr x1, [x0] // carico il valore puntato da x0 in x1
     ADD x0, x0, #2 // 5+2

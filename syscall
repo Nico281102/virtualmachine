@@ -1,0 +1,6 @@
+Syscall decimale esadecimale
+
+exit(0)  #93
+write    #64     #0x40
+read     #63     #0x3f 
+

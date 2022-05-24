@@ -18,10 +18,14 @@ _start:
     str x0, [SP], #-16  push 5 nello stack, modifico SP
     */
     
-    adr x0, c // metto il puntatore a c in x0
-    ldr x1, [x0] // carico il valore puntato da x0 in x1
-    ADD x0, x0, #2 // 5+2
-    mov x8, #64 
+    mov x0, #1 //descrittore dello std_out
+    adr x1, c // metto il puntatore a c in x0
+    ldr x3, [x1] // carico il valore puntato da x1 in x3
+    mov x4, #2
+    add x3, x4 , #5 // 2 + 5 */
+    str x3, [x1]
+    mov x2, #4 // carico la len da stampare
+    mov x8, #0x40 //chiamo la write
     svc #0
 
     mov x0, #0
@@ -31,3 +35,4 @@ _start:
 
     .data
     c: .word 5
+    Fuck: .string "Fuck"

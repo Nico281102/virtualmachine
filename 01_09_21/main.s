@@ -28,25 +28,25 @@ _start:
 low2upp:
     movz x1, #0 //int i = 0;
     
-    adr x6, l
-    ldr x6, [x6]
-    cmp x1, x6  //if(i >= l) goto endwhile
+    adr x6, len
+    ldr w7, [x6] //x7 = *(len)
+    cmp x1, x7  //if(x1 >= x7) goto endwhile
     b.ge endwhile
 
-    initwhile:
     adr x2, s // x2= &s
+    initwhile:
     add x3, x2, x1 // sommo l'offset al puntatore x3 = s+i
     ldr x4, [x3] // x4 = *(x3) v = s[i]
     cmp x4, #97  // if( x4 < 97) goto endif
     b.lt endif
     cmp x4, #122 // if(x3 > 122) goto endif
     b.gt endif
-    sub x4, x4, #32 // v = v- 32
-    str x4, [x3] // s+i = vl    
+    sub x4, x4, #32 // v = v - 32
+    str x4, [x3] // s+i = v    
     add x1, x1, #1
     endif:
-    cmp x1, x6
-    b.ge endwhile
+    cmp x1, x7
+    b.lt initwhile
     endwhile:
     RET
 
@@ -58,7 +58,7 @@ adr x1, s // metto in x1 il puntatore alla stringa
 mov x2, #12 // metto in x2 la len della stringa
 mov x8, #0x40 //chiama la write, x8 è il registro per le syscall /*0x40 <=> 64 , 64 <=> 0100 0000 <=> 40 */
 svc #0
-
+RET
 .data
 s: .string "stringa"
-l: .word 7
+len: .word 7

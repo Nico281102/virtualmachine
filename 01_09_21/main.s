@@ -13,11 +13,34 @@ char v;                              x0 = 0
 }
 
 1. Tradurre in assembly ARM, usando $s0 per la variabile char v (in verit`a, il byte meno significativo del registro).*/
+   
+   // callee saved: x19 - x27
+   // caller saved: x0  - x15
+   
+// Corretto il salvataggio del LR?
+// Come si utilizza l'AND logico?
+// Differenza tra registri callee saved e caller saved?
+   
    .global _start
 _start:
-    
+
+    //Salvo il LR nello stack
+    str LR, [sp, #-16]!
+    //chiamo la funzione
     BL low2upp
+    //ripristino il LR
+    ldr LR, [sp], #16
+
+
+    //Salvo il LR nello stack
+    str LR, [sp, #-16]!
+    //chiamo la funzione
     BL print_string
+    //ripristino il LR
+    ldr LR, [sp], #16
+
+
+    //fine del programma
     mov x0, #0
     mov x8, #93
     svc #0
@@ -26,39 +49,47 @@ _start:
    
     .global low2upp
 low2upp:
-    movz x1, #0 //int i = 0;
+
+    movz w1, #0 //int i = 0;
     
     adr x6, len
     ldr w7, [x6] //x7 = *(len)
-    cmp x1, x7  //if(x1 >= x7) goto endwhile
+    cmp w1, w7  //if(x1 >= x7) goto endwhile
     b.ge endwhile
 
-    adr x2, s // x2= &s
+    adr x2, s // x2= s
     initwhile:
+
     add x3, x2, x1 // sommo l'offset al puntatore x3 = s+i
-    ldr x4, [x3] // x4 = *(x3) v = s[i]
-    cmp x4, #97  // if( x4 < 97) goto endif
+    ldrb w4, [x3] // w4 = *(x3) v = s[i], carico 1 byte
+    cmp w4, #97  // if( w4 < 97) goto endif
     b.lt endif
-    cmp x4, #122 // if(x3 > 122) goto endif
+    cmp w4, #122 // if(w4 > 122) goto endif
     b.gt endif
-    sub x4, x4, #32 // v = v - 32
-    str x4, [x3] // s+i = v    
-    add x1, x1, #1
+    sub w4, w4, #32 // v = v - 32
+    strb w4, [x3] // s+i = v    
+    add w1, w1, #1
+
     endif:
-    cmp x1, x7
+    cmp w1, w7 // if( w1 < w7 ) goto initwhile
     b.lt initwhile
+
     endwhile:
     RET
+
+
 
     .global print_string
 
 print_string:
-mov x0, #1 //descrittore dello std_out
-adr x1, s // metto in x1 il puntatore alla stringa
-mov x2, #12 // metto in x2 la len della stringa
-mov x8, #0x40 //chiama la write, x8 è il registro per le syscall /*0x40 <=> 64 , 64 <=> 0100 0000 <=> 40 */
-svc #0
-RET
+
+    mov x0, #1 //descrittore dello std_out
+    adr x1, s // metto in x1 il puntatore alla stringa
+    mov x2, #12 // metto in x2 la len della stringa
+    mov x8, #0x40 //chiama la write, x8 è il registro per le syscall /*0x40 <=> 64 , 64 <=> 0100 0000 <=> 40 */
+    svc #0
+    RET
+
 .data
 s: .string "stringa"
 len: .word 7

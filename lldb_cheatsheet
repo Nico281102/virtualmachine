@@ -1,3 +1,5 @@
+Questo cheatsheet contiene il cheatsheet pubblicato dal prof Bergamasco e qualche funzione aggiuntiva utilizzata durante il tutorato.
+
  lldb cheatsheet                                                    rev.06042022
 =================================================================================
  Architettura Degli Elaboratori Mod 2
@@ -178,4 +180,20 @@ Examples:
 
 (lldb) e -f d -- (char)0b10011100
 (char) $7 = -100
+
+------------------------------------------------------------------------------
+Funzioni aggiuntive usate durante il tutorato
+------------------------------------------------------------------------------
+
+| Function                       | Command                                     |
+| ============================== | =========================================== |
+| set a breakpoint on line/symbol| b <line number/symbol>                      |
+|--------------------------------+---------------------------------------------|
+| show other breakpoint options  | breakpoint                                  |   
+|--------------------------------+---------------------------------------------|
+| set a breakpoint on line/symbol| b <line number/symbol>                      |   
+|--------------------------------+---------------------------------------------|
+|--------------------------------+---------------------------------------------|
+| execute <command> at each step | target stop-hook add --one-liner "<command>"|
+|--------------------------------+---------------------------------------------|
 

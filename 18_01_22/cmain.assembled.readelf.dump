@@ -1,0 +1,157 @@
+ELF Header:
+  Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00 
+  Class:                             ELF64
+  Data:                              2's complement, little endian
+  Version:                           1 (current)
+  OS/ABI:                            UNIX - System V
+  ABI Version:                       0
+  Type:                              REL (Relocatable file)
+  Machine:                           AArch64
+  Version:                           0x1
+  Entry point address:               0x0
+  Start of program headers:          0 (bytes into file)
+  Start of section headers:          3320 (bytes into file)
+  Flags:                             0x0
+  Size of this header:               64 (bytes)
+  Size of program headers:           0 (bytes)
+  Number of program headers:         0
+  Size of section headers:           64 (bytes)
+  Number of section headers:         18
+  Section header string table index: 1
+
+Section Headers:
+  [Nr] Name              Type             Address           Offset
+       Size              EntSize          Flags  Link  Info  Align
+  [ 0]                   NULL             0000000000000000  00000000
+       0000000000000000  0000000000000000           0     0     0
+  [ 1] .strtab           STRTAB           0000000000000000  00000bfc
+       00000000000000fb  0000000000000000           0     0     1
+  [ 2] .text             PROGBITS         0000000000000000  00000040
+       0000000000000154  0000000000000000  AX       0     0     4
+  [ 3] .rela.text        RELA             0000000000000000  000007c0
+       0000000000000138  0000000000000018          17     2     8
+  [ 4] .data             PROGBITS         0000000000000000  00000194
+       0000000000000014  0000000000000000  WA       0     0     4
+  [ 5] .rodata.str1.1    PROGBITS         0000000000000000  000001a8
+       0000000000000012  0000000000000001 AMS       0     0     1
+  [ 6] .debug_abbrev     PROGBITS         0000000000000000  000001ba
+       00000000000000ba  0000000000000000           0     0     1
+  [ 7] .debug_info       PROGBITS         0000000000000000  00000274
+       0000000000000127  0000000000000000           0     0     1
+  [ 8] .rela.debug_info  RELA             0000000000000000  000008f8
+       0000000000000258  0000000000000018          17     7     8
+  [ 9] .debug_str        PROGBITS         0000000000000000  0000039b
+       0000000000000088  0000000000000001  MS       0     0     1
+  [10] .comment          PROGBITS         0000000000000000  00000423
+       000000000000001f  0000000000000001  MS       0     0     1
+  [11] .note.GNU-stack   PROGBITS         0000000000000000  00000442
+       0000000000000000  0000000000000000           0     0     1
+  [12] .debug_frame      PROGBITS         0000000000000000  00000448
+       0000000000000078  0000000000000000           0     0     8
+  [13] .rela.debug_frame RELA             0000000000000000  00000b50
+       0000000000000090  0000000000000018          17    12     8
+  [14] .debug_line       PROGBITS         0000000000000000  000004c0
+       00000000000000ed  0000000000000000           0     0     1
+  [15] .rela.debug_line  RELA             0000000000000000  00000be0
+       0000000000000018  0000000000000018          17    14     8
+  [16] .llvm_addrsig     LOOS+0xfff4c03   0000000000000000  00000bf8
+       0000000000000004  0000000000000000   E      17     0     1
+  [17] .symtab           SYMTAB           0000000000000000  000005b0
+       0000000000000210  0000000000000018           1    17     8
+Key to Flags:
+  W (write), A (alloc), X (execute), M (merge), S (strings), I (info),
+  L (link order), O (extra OS processing required), G (group), T (TLS),
+  C (compressed), x (unknown), o (OS specific), E (exclude),
+  p (processor specific)
+
+There are no section groups in this file.
+
+There are no program headers in this file.
+
+There is no dynamic section in this file.
+
+Relocation section '.rela.text' at offset 0x7c0 contains 13 entries:
+  Offset          Info           Type           Sym. Value    Sym. Name + Addend
+0000000000b4  000c00000113 R_AARCH64_ADR_PRE 0000000000000000 .rodata.str1.1 + 0
+0000000000b8  000c00000115 R_AARCH64_ADD_ABS 0000000000000000 .rodata.str1.1 + 0
+0000000000bc  00140000011b R_AARCH64_CALL26  0000000000000000 printf + 0
+0000000000d0  000c00000113 R_AARCH64_ADR_PRE 0000000000000000 .rodata.str1.1 + 6
+0000000000d4  000c00000115 R_AARCH64_ADD_ABS 0000000000000000 .rodata.str1.1 + 6
+0000000000d8  00140000011b R_AARCH64_CALL26  0000000000000000 printf + 0
+0000000000fc  001100000113 R_AARCH64_ADR_PRE 0000000000000000 a + 0
+000000000100  001100000115 R_AARCH64_ADD_ABS 0000000000000000 a + 0
+00000000011c  00150000011b R_AARCH64_CALL26  0000000000000000 remove_neg + 0
+000000000128  000c00000113 R_AARCH64_ADR_PRE 0000000000000000 .rodata.str1.1 + 8
+00000000012c  000c00000115 R_AARCH64_ADD_ABS 0000000000000000 .rodata.str1.1 + 8
+000000000130  00140000011b R_AARCH64_CALL26  0000000000000000 printf + 0
+000000000140  00130000011b R_AARCH64_CALL26  0000000000000080 print_arr + 0
+
+Relocation section '.rela.debug_info' at offset 0x8f8 contains 25 entries:
+  Offset          Info           Type           Sym. Value    Sym. Name + Addend
+000000000006  000d00000102 R_AARCH64_ABS32   0000000000000000 .debug_abbrev + 0
+00000000000c  000e00000102 R_AARCH64_ABS32   0000000000000000 .debug_str + 0
+000000000012  000e00000102 R_AARCH64_ABS32   0000000000000000 .debug_str + 1e
+000000000016  001000000102 R_AARCH64_ABS32   0000000000000000 .debug_line + 0
+00000000001a  000e00000102 R_AARCH64_ABS32   0000000000000000 .debug_str + 26
+00000000001e  000b00000101 R_AARCH64_ABS64   0000000000000000 .text + 0
+00000000002b  000e00000102 R_AARCH64_ABS32   0000000000000000 .debug_str + 47
+000000000037  001100000101 R_AARCH64_ABS64   0000000000000000 a + 0
+00000000004c  000e00000102 R_AARCH64_ABS32   0000000000000000 .debug_str + 49
+000000000053  000e00000102 R_AARCH64_ABS32   0000000000000000 .debug_str + 4d
+00000000005a  000b00000101 R_AARCH64_ABS64   0000000000000000 .text + 0
+000000000068  000e00000102 R_AARCH64_ABS32   0000000000000000 .debug_str + 61
+000000000076  000e00000102 R_AARCH64_ABS32   0000000000000000 .debug_str + 7b
+000000000084  000e00000102 R_AARCH64_ABS32   0000000000000000 .debug_str + 7e
+000000000092  000e00000102 R_AARCH64_ABS32   0000000000000000 .debug_str + 82
+0000000000a0  000e00000102 R_AARCH64_ABS32   0000000000000000 .debug_str + 84
+0000000000ac  000b00000101 R_AARCH64_ABS64   0000000000000000 .text + 80
+0000000000ba  000e00000102 R_AARCH64_ABS32   0000000000000000 .debug_str + 6c
+0000000000c4  000e00000102 R_AARCH64_ABS32   0000000000000000 .debug_str + 47
+0000000000d2  000e00000102 R_AARCH64_ABS32   0000000000000000 .debug_str + 7e
+0000000000dd  000b00000101 R_AARCH64_ABS64   0000000000000000 .text + 94
+0000000000ed  000e00000102 R_AARCH64_ABS32   0000000000000000 .debug_str + 82
+0000000000fa  000b00000101 R_AARCH64_ABS64   0000000000000000 .text + e8
+000000000108  000e00000102 R_AARCH64_ABS32   0000000000000000 .debug_str + 76
+000000000116  000e00000102 R_AARCH64_ABS32   0000000000000000 .debug_str + 84
+
+Relocation section '.rela.debug_frame' at offset 0xb50 contains 6 entries:
+  Offset          Info           Type           Sym. Value    Sym. Name + Addend
+00000000001c  000f00000102 R_AARCH64_ABS32   0000000000000000 .debug_frame + 0
+000000000020  000b00000101 R_AARCH64_ABS64   0000000000000000 .text + 0
+00000000003c  000f00000102 R_AARCH64_ABS32   0000000000000000 .debug_frame + 0
+000000000040  000b00000101 R_AARCH64_ABS64   0000000000000000 .text + 80
+00000000005c  000f00000102 R_AARCH64_ABS32   0000000000000000 .debug_frame + 0
+000000000060  000b00000101 R_AARCH64_ABS64   0000000000000000 .text + e8
+
+Relocation section '.rela.debug_line' at offset 0xbe0 contains 1 entry:
+  Offset          Info           Type           Sym. Value    Sym. Name + Addend
+00000000002c  000b00000101 R_AARCH64_ABS64   0000000000000000 .text + 0
+
+The decoding of unwind sections for machine type AArch64 is not currently supported.
+
+Symbol table '.symtab' contains 22 entries:
+   Num:    Value          Size Type    Bind   Vis      Ndx Name
+     0: 0000000000000000     0 NOTYPE  LOCAL  DEFAULT  UND 
+     1: 0000000000000000     0 FILE    LOCAL  DEFAULT  ABS cmain.c
+     2: 0000000000000000     0 NOTYPE  LOCAL  DEFAULT    4 $d.1
+     3: 0000000000000000     0 NOTYPE  LOCAL  DEFAULT    5 $d.2
+     4: 0000000000000000     0 NOTYPE  LOCAL  DEFAULT    6 $d.3
+     5: 0000000000000000     0 NOTYPE  LOCAL  DEFAULT    7 $d.4
+     6: 0000000000000000     0 NOTYPE  LOCAL  DEFAULT    9 $d.5
+     7: 0000000000000000     0 NOTYPE  LOCAL  DEFAULT   10 $d.6
+     8: 0000000000000000     0 NOTYPE  LOCAL  DEFAULT   12 $d.7
+     9: 0000000000000000     0 NOTYPE  LOCAL  DEFAULT   14 $d.8
+    10: 0000000000000000     0 NOTYPE  LOCAL  DEFAULT    2 $x.0
+    11: 0000000000000000     0 SECTION LOCAL  DEFAULT    2 
+    12: 0000000000000000     0 SECTION LOCAL  DEFAULT    5 
+    13: 0000000000000000     0 SECTION LOCAL  DEFAULT    6 
+    14: 0000000000000000     0 SECTION LOCAL  DEFAULT    9 
+    15: 0000000000000000     0 SECTION LOCAL  DEFAULT   12 
+    16: 0000000000000000     0 SECTION LOCAL  DEFAULT   14 
+    17: 0000000000000000    20 OBJECT  GLOBAL DEFAULT    4 a
+    18: 00000000000000e8   108 FUNC    GLOBAL DEFAULT    2 main
+    19: 0000000000000080   104 FUNC    GLOBAL DEFAULT    2 print_arr
+    20: 0000000000000000     0 NOTYPE  GLOBAL DEFAULT  UND printf
+    21: 0000000000000000   128 FUNC    GLOBAL DEFAULT    2 remove_neg
+
+No version information found in this file.

@@ -35,6 +35,9 @@ RET
     .global double_vect
 
 double_vect:
+    stp LR, x19, [sp, #-16]!
+    stp x22, x23, [sp, #-16]!
+    str x24, [sp, #-16]!
 
     mov x0, #0
     mov x19, #0
@@ -53,22 +56,22 @@ double_vect:
     cmp x19, x3
     b.lt initwhile
     endwhile:
+
+    ldr x24, [sp], #16
+    ldp x22, x23, [sp], #16
+    ldp LR, x19, [sp], #16
+    
     RET
 
     .global _start
 
 _start:
-    stp LR, x19, [sp, #-16]!
-    stp x22, x23, [sp, #-16]!
-    str x24, [sp, #-16]!
+
     adr x1, b
     adr x2, a
     adr x4, len
     ldr x3, [x4] 
     BL double_vect
-    ldr x24, [sp], #16
-    ldp x22, x23, [sp], #16
-    ldp LR, x19, [sp], #16
 
     mov x0, #0
     mov x8, #93

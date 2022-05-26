@@ -62,10 +62,11 @@ low2upp:
 
     add x3, x2, x1 // sommo l'offset al puntatore x3 = s+i
     ldrb w4, [x3] // w4 = *(x3) v = s[i], carico 1 byte
-    cmp w4, #97  // if( w4 < 97) goto endif
+    
+    /*cmp w4, #97  // if( w4 < 97) goto endif
     b.lt endif
     cmp w4, #122 // if(w4 > 122) goto endif
-    b.gt endif
+    b.gt endif*/
     sub w4, w4, #32 // v = v - 32
     strb w4, [x3] // s+i = v    
     add w1, w1, #1

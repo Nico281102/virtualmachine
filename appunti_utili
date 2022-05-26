@@ -18,3 +18,9 @@ v[i]
 add x11, x1, x9, LSL #2 // questo shifta 4 byte
 ldr w2, [x11]
 
+
+se io sono una funzione e voglio usare i registri x0-x15 posso farlo tranquillamente,
+ma se chiamo nel mio corpo un altra funzione mi conviene salvarli sullo stack.
+se invece voglio usare i registri x19-x27 e LR devo prima salvarli sullo stack e poi 
+ripristinarli al chiamante prina di ritornare.
+

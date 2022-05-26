@@ -1,0 +1,4 @@
+registri caller saved x0  - x15
+registri callee saved x19 - x27 , LR
+Se una funzione usa i registri x19 - x27 o LR deve ripristinarli prima di tornare
+Se il chiamante di una funzione vuole preservare il valore dei registri x0 - x15 deve prima salvarli sullo stack, perchè le funzioni potrebbero toccarli

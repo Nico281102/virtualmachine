@@ -2,3 +2,19 @@ registri caller saved x0  - x15
 registri callee saved x19 - x27 , LR
 Se una funzione usa i registri x19 - x27 o LR deve ripristinarli prima di tornare
 Se il chiamante di una funzione vuole preservare il valore dei registri x0 - x15 deve prima salvarli sullo stack, perchè le funzioni potrebbero toccarli
+
+se voglio andare avanti in un array senza sfruttare l'indice posso fare
+v = v + sizeof(array_element)
+1) x1 inidirizzo dell'aray
+2) 4 byte è la dimensione di un elemento
+add x1, x1, #4
+
+se voglio andare avanti in un array sfruttando l'indice posso fare
+v[i]
+1) x1 inidirizzo iniziale dell'array,
+2) x11 l'inidirizzo che aggiorno sempre in base ad i
+3) x9 è l'indice
+4) w2 la copia dell'elemento dell'array
+add x11, x1, x9, LSL #2 // questo shifta 4 byte
+ldr w2, [x11]
+

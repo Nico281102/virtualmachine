@@ -7,7 +7,8 @@ for (i = 0; i < slen; i++)
 print_char(*(p + i));
 }
  */
-
+// nota: il primo parametro viene passato per x1, mentre in realtà dovrebbe passare in x0
+// nota: data la quantità di ldr e str nel loop, conveniva usare i registri x19-x27 e ripristinarli alla fine della funzione
 
         .text 
         .p2align 2

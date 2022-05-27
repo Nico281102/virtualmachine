@@ -13,6 +13,7 @@ print_char(*(p + i));
         .p2align 2
         .global string_print
     string_print:
+    str LR, [sp, #-16]! //salvo il link register
 // Param: x1 = str, w2 = slen
     mov x9, #0 // int i = 0
     mov x10, x1 // char* p = str; 
@@ -26,11 +27,10 @@ print_char(*(p + i));
 
     stp w9, w2, [sp, #-16]! //mi assicuro che non vengano toccati
     stp x10,  x1, [sp, #-16]! //mi assicuro che non vengano toccati
-    str LR, [sp, #-16]! //salvo il link register
 
+    mov x1, x10 //metto il puntatore alla stringa in x1
     BL print_char
     
-    ldr LR, [sp], #16 //ripristino il link register
     ldp x10, x1, [sp], #16 //mi assicuro che non vengano toccati (io sono il caller e non posso assumere che non vengano toccati)
     ldp w9, w2, [sp], #16 //mi assicuro che non vengano toccati
 
@@ -38,13 +38,13 @@ print_char(*(p + i));
     cmp w9, w2
     b.lt initwhile
     endwhile:
+    ldr LR, [sp], #16 //ripristino il link register
     RET
 
         .global print_char
     print_char:
     //Param x1 = &char 
     mov x0, #1 //descrittore std_out
-    mov x1, x10 //metto il puntatore alla stringa in x1
     mov x2, #1 //byte da stampare
     mov x8, #64
     svc #0

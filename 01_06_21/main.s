@@ -5,105 +5,80 @@ int sump, sumn;
 if (n == 0) return;
 sump = 0;
 sumn = 0;
-    for (i=0; i < n; i++) {
-        if (*v > 0)
-            sump += *v;
-        if (*v < 0)
-            sumn += *v;
-        v = v+1;
+for (i=0; i < n; i++) {
+if (*v > 0)
+sump += *v;
+if (*v < 0)
+sumn += *v;
+v = v+1;
 }
 *sum_pos = sump;
 *sum_neg = sumn;
 } */
-
-/*
-
-x0 = 0
-mov w19 #0
-mov w20 #0
-if( x2 != 0) goto endif
-RET
-endif:
-if(x0 >= x2) goto endwhile
-initwhile:
-    if(*x1 <= 0) goto endif_1
-        w19 = w19 + *x1
-    endif_1:
-    if(*x1 >= 0) foto endif_2
-        w20 = w20 + *x1
-    endif_2:
-    x1 = x1 + 1
-
-if(x0 < x2 ) goto initwhile
-endwhile:
-*x3 = w19
-*x4 = w20
-RET
-
-
-
- */
     .text
     .p2align 2
 
     .global sum_pos_neg
 sum_pos_neg:
+// param: ( x0 = v, w1 = n, x2 = sum_pos, x3 = sum_neg)
+mov w9, #0 // int i = 0
 
-    mov x0, #0 //int i = 0
-    mov w19, #0 //sump = 0
-    mov w20, #0 // sumn = 0
-    CMP w2, #0 // if(n!= 0) goto endif
-    b.ne endif
-    RET
-    endif:
-    cmp x0, x2 //(if x0 >= x2) goto endwhile
-    b.ge endwhile
-    initwhile:
-    ldr w21, [x1] // w21 = *x1
-    cmp w21, #0 // if( x21 < 0) goto endif_1
+cmp w1, #0 //if( n == 0) goto return
+b.eq return
+
+mov w10, #0 // w10 = 0
+mov w11, #0 // w11 = 0
+
+cmp w9, w1 // if( i >= n) goto endwhile
+b.ge endwhile
+initwhile:
+ldr w12, [x0] // w12 = *v
+
+
+    cmp w12, #0 //if(*v <= 0 ) goto endif_1
     b.le endif_1
-    add w19, w19, w21 // w19 = w19 + w21
-    endif_1:
-    cmp w21, #0
+    add w10, w10, w12
+    endif_1: 
+
+    cmp w12, #0 // if(*v >= 0 ) goto endif_2
     b.ge endif_2
-    add w20, w20, w21 // w20 = w20 + w21
+    add w11, w11, w12
+
     endif_2:
-    add x1, x1, #4
-    add x0, x0, #1
-    cmp x0, x2
+
+    add x0, x0, #4 // v = v + 1
+    add w9, w9, #1
+    
+    cmp w9, w1 // if( i < n) goto initwhile
     b.lt initwhile
-
     endwhile:
-    str w19, [x3] // *x3 = x19
-    str w20, [x4] // *x4 = x20
-    RET
 
+    str w10, [x2]
+    str w11, [x3]
+
+return:
+RET
 
     .global _start
 _start:
 
-    adr x1, v
-    adr x5, len
-    ldr w2, [x5]
-    adr x3, sum_pos
-    adr x4, sum_neg
-    str LR, [sp, #-16]!
-    BL sum_pos_neg
-    ldr LR, [sp], #16
-    ldr w24, [x3]
-    ldr w25, [x4]
+    adr x0,v
+    adr x1, len
+    ldr x1, [x1]
+    adr x2, sum_pos
+    adr x3, sum_neg
 
-    //fine programma
+    BL sum_pos_neg
+
     mov x0, #0
     mov x8, #93
     svc #0
 
+
+
     .data
     .p2align 2
-
-v: .word 1, -3, 3, 5, -6, 12
-len: .word 6 //n
+v: .word 1, -2, 4, -34
+len: .word 4
 sum_pos: .space 4
 sum_neg: .space 4
-
-

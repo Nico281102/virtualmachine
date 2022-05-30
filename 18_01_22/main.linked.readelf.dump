@@ -8,7 +8,7 @@ ELF Header:
   Type:                              EXEC (Executable file)
   Machine:                           AArch64
   Version:                           0x1
-  Entry point address:               0x210158
+  Entry point address:               0x210198
   Start of program headers:          64 (bytes into file)
   Start of section headers:          1392 (bytes into file)
   Flags:                             0x0
@@ -25,25 +25,25 @@ Section Headers:
   [ 0]                   NULL             0000000000000000  00000000
        0000000000000000  0000000000000000           0     0     0
   [ 1] .text             PROGBITS         0000000000210158  00000158
-       0000000000000070  0000000000000000  AX       0     0     4
-  [ 2] .data             PROGBITS         00000000002201c8  000001c8
-       0000000000000014  0000000000000000  WA       0     0     4
-  [ 3] .debug_info       PROGBITS         0000000000000000  000001dc
+       000000000000005c  0000000000000000  AX       0     0     4
+  [ 2] .data             PROGBITS         00000000002201b4  000001b4
+       0000000000000018  0000000000000000  WA       0     0     4
+  [ 3] .debug_info       PROGBITS         0000000000000000  000001cc
        00000000000000e8  0000000000000000           0     0     1
-  [ 4] .debug_abbrev     PROGBITS         0000000000000000  000002c4
+  [ 4] .debug_abbrev     PROGBITS         0000000000000000  000002b4
        0000000000000021  0000000000000000           0     0     1
-  [ 5] .debug_aranges    PROGBITS         0000000000000000  000002e5
+  [ 5] .debug_aranges    PROGBITS         0000000000000000  000002d5
        0000000000000030  0000000000000000           0     0     1
-  [ 6] .debug_line       PROGBITS         0000000000000000  00000315
-       0000000000000056  0000000000000000           0     0     1
-  [ 7] .comment          PROGBITS         0000000000000000  0000036b
+  [ 6] .debug_line       PROGBITS         0000000000000000  00000305
+       000000000000004f  0000000000000000           0     0     1
+  [ 7] .comment          PROGBITS         0000000000000000  00000354
        0000000000000013  0000000000000001  MS       0     0     1
-  [ 8] .symtab           SYMTAB           0000000000000000  00000380
-       0000000000000138  0000000000000018          10    11     8
+  [ 8] .symtab           SYMTAB           0000000000000000  00000368
+       0000000000000150  0000000000000018          10    12     8
   [ 9] .shstrtab         STRTAB           0000000000000000  000004b8
        0000000000000065  0000000000000000           0     0     1
   [10] .strtab           STRTAB           0000000000000000  0000051d
-       000000000000004c  0000000000000000           0     0     1
+       0000000000000051  0000000000000000           0     0     1
 Key to Flags:
   W (write), A (alloc), X (execute), M (merge), S (strings), I (info),
   L (link order), O (extra OS processing required), G (group), T (TLS),
@@ -60,9 +60,9 @@ Program Headers:
   LOAD           0x0000000000000000 0x0000000000200000 0x0000000000200000
                  0x0000000000000158 0x0000000000000158  R      0x10000
   LOAD           0x0000000000000158 0x0000000000210158 0x0000000000210158
-                 0x0000000000000070 0x0000000000000070  R E    0x10000
-  LOAD           0x00000000000001c8 0x00000000002201c8 0x00000000002201c8
-                 0x0000000000000014 0x0000000000000014  RW     0x10000
+                 0x000000000000005c 0x000000000000005c  R E    0x10000
+  LOAD           0x00000000000001b4 0x00000000002201b4 0x00000000002201b4
+                 0x0000000000000018 0x0000000000000018  RW     0x10000
   GNU_STACK      0x0000000000000000 0x0000000000000000 0x0000000000000000
                  0x0000000000000000 0x0000000000000000  RW     0x0
 
@@ -80,20 +80,21 @@ There are no relocations in this file.
 
 The decoding of unwind sections for machine type AArch64 is not currently supported.
 
-Symbol table '.symtab' contains 13 entries:
+Symbol table '.symtab' contains 14 entries:
    Num:    Value          Size Type    Bind   Vis      Ndx Name
      0: 0000000000000000     0 NOTYPE  LOCAL  DEFAULT  UND 
-     1: 00000000002201c8     0 NOTYPE  LOCAL  DEFAULT    2 $d.1
+     1: 00000000002201b4     0 NOTYPE  LOCAL  DEFAULT    2 $d.1
      2: 0000000000000000     0 NOTYPE  LOCAL  DEFAULT    5 $d.2
      3: 0000000000000000     0 NOTYPE  LOCAL  DEFAULT    4 $d.3
      4: 0000000000000000     0 NOTYPE  LOCAL  DEFAULT    3 $d.4
      5: 0000000000000000     0 NOTYPE  LOCAL  DEFAULT    6 $d.5
      6: 0000000000210158     0 NOTYPE  LOCAL  DEFAULT    1 $x.0
-     7: 00000000002201c8     0 NOTYPE  LOCAL  DEFAULT    2 a
-     8: 00000000002101b8     0 NOTYPE  LOCAL  DEFAULT    1 endif
-     9: 00000000002101c4     0 NOTYPE  LOCAL  DEFAULT    1 endwhile
-    10: 000000000021019c     0 NOTYPE  LOCAL  DEFAULT    1 initwhile
-    11: 0000000000210158     0 NOTYPE  GLOBAL DEFAULT    1 _start
-    12: 0000000000210188     0 NOTYPE  GLOBAL DEFAULT    1 remove_neg
+     7: 0000000000210180     0 NOTYPE  LOCAL  DEFAULT    1 endif
+     8: 0000000000210190     0 NOTYPE  LOCAL  DEFAULT    1 endwhile
+     9: 00000000002201b4     0 NOTYPE  LOCAL  DEFAULT    2 in
+    10: 0000000000210168     0 NOTYPE  LOCAL  DEFAULT    1 initwhile
+    11: 00000000002201c8     0 NOTYPE  LOCAL  DEFAULT    2 len
+    12: 0000000000210198     0 NOTYPE  GLOBAL DEFAULT    1 _start
+    13: 0000000000210158     0 NOTYPE  GLOBAL DEFAULT    1 remove_neg
 
 No version information found in this file.
